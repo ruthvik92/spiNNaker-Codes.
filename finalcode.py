@@ -1,6 +1,6 @@
-''' this code TRIES TO MAKE FULL SPIKE DATA and STORE A PICKLED SPIKE DATA before tunning this code run poisson_pattern.py code to generate your pattern, 
+''' this code TRIES TO MAKE FULL SPIKE DATA  before running this code run poisson_pattern.py code to generate your pattern, 
 remember to change the file name every time you generate new pattern because file name also changes, No.Of neurons should 
-be same as the poisson_pattern.py code.
+be same as the poisson_pattern.py code. Tries to Implement STDP based unsupervised learning.
 
 
 k: because of biological issues the neurons fire a lil more time than specified time 'pattern_length' specified in other code.
