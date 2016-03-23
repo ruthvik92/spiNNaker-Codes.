@@ -1,0 +1,31 @@
+2016-03-22 12:58:26 WARNING: STDP lookup table with size 256 is too short to contain decay with time constant 33 - last entry is 0.000517
+
+
+
+
+Getting provenance data
+|0                           50%                         100%|
+ ============================================================
+2016-03-22 13:05:43 INFO: Getting spikes for Population 0
+Getting spikes
+|0                           50%                         100%|
+ Traceback (most recent call last):
+  File "finalcode.py", line 100, in <module>
+    c=stimlus_pop.getSpikes()
+  File "/usr/local/lib/python2.7/dist-packages/spynnaker/pyNN/models/pynn_population.py", line 215, in getSpikes
+    compatible_output=compatible_output)
+  File "/usr/local/lib/python2.7/dist-packages/spynnaker/pyNN/models/spike_source/spike_source_array.py", line 467, in get_spikes
+    send_buffer.total_region_size))
+spynnaker.pyNN.exceptions.MemReadException: the amount of memory written (3218404) was larger than was allocated for it (3218402)
+
+
+
+
+
+
+e.spike_source_poisson.SpikeSourcePoisson object at 0x7f794e6a0650>:
+No resources available to allocate the given resources within the given constraints:
+    Request for CPU: 0, DTCM: 0, SDRAM: 1816
+    Resources available which meet constraints: 0 Cores on 0 chips, largest SDRAM space: 0
+
+
