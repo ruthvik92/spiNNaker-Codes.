@@ -1,10 +1,10 @@
 ''' this code TRIES TO MAKE FULL SPIKE DATA  before running this code run poisson_pattern.py code to generate your pattern, 
-remember to change the file name every time you generate new pattern because file name also changes, No.Of neurons should 
-be same as the poisson_pattern.py code. Tries to Implement STDP based unsupervised learning.
-
-
+remember to change the file name in this code every time you generate new pattern because file name also changes in poisson_pattern.py
+code, No.Of neurons, firing rate should be same as the poisson_pattern.py code. Tries to Implement 
+STDP based unsupervised learning.
 k: because of biological issues the neurons fire a lil more time than specified time 'pattern_length' specified in other code.
-pattern_gap: time after which pattern reappears again '''
+pattern_gap: time after which pattern reappears again 
+n: no. of patterns you totally want in the spike data'''
 
 Neurons=int(raw_input('Enter the total No.Of neurons in the simulation: '))
 n= int(raw_input('Enter No of Patterns you totally want(n): '))
@@ -37,7 +37,7 @@ b=pickle.load(open('/home/ruthvik/Desktop/spikefile_800_50ms_60Hz','rb'))
 
 
 spikes=[]
-### change the pickle file spike data format so that it can be given poisson spike source
+### change the pickle file spike data format so that it can be given as SpikeSourceArray 
 
 for c in range(int(b[-1][0])+1): ##this is number of neurons.
     spikes.append([])
@@ -95,9 +95,6 @@ project_ip_op = p.Projection( ip_pop,op_pop, p.AllToAllConnector(weights=.475, d
 stimlus_pop.record()
 ip_pop.record()
 op_pop.record()
-
-
-
 
 p.run((pattern_gap+k)*n)
 
