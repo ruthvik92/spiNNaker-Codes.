@@ -57,19 +57,19 @@ for i in range(len(spikes)):                                   ##Here we are rep
          for c in range(1,n):
            spikes[i].append((pattern_gap+k)*c+spikes[i][j])
 
-################################################################################################################################
-#here we are creating 'noise' spike data.
+
 IAddPre = []
            
 
 
-##input the replicated data to spinnaker.
+##input the replicated pattern data to spinnaker.
 stimlus_pop = p.Population(Neurons,p.SpikeSourceArray, {'spike_times': spikes})
-
+##creating input and otuput populations.
 ip_pop = p.Population(Neurons, p.IF_curr_exp, cell_params_lif, label="inputneurons")
 op_pop = p.Population(1, p.IF_curr_exp, cell_params_lif, label='outputneuron')
 project_stim_pop_ip_pop = p.Projection( stimlus_pop,ip_pop, p.OneToOneConnector(weights=10, delays=1.0), target="excitatory")
-
+################################################################################################################################
+#here we are creating 'noise' spike data.
 for i in range(1,n):
     IAddPre.append(p.Population(Neurons,
                                   p.SpikeSourcePoisson,
