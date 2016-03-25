@@ -5,7 +5,7 @@ STDP based unsupervised learning.
 k: because of biological issues the neurons fire a lil more time than specified time 'pattern_length' specified in other code.
 pattern_gap: time after which pattern reappears again 
 n: no. of patterns you totally want in the spike data'''
-
+#######################################################################################################################################
 Neurons=int(raw_input('Enter the total No.Of neurons in the simulation: '))
 n= int(raw_input('Enter No of Patterns you totally want(n): '))
 pattern_gap= int(raw_input('Enter the duration after which next pattern should appear(pattern_gap): '))
@@ -15,7 +15,7 @@ import pyNN.spiNNaker as p
 import pylab
 import pickle
 p.setup(timestep = 1.0)  # runs using a 1.0ms timestep
-
+######################################################################################################################################
 # here the default parameters of the IF_curr_exp are used. These are:
 
 # In PyNN, the neurons are declared in terms of a population of a number of neurons with similar properties
@@ -30,8 +30,8 @@ cell_params_lif = {'cm'        : 0.25, # nF #capacitance of LIF neuron in nF
                    'v_thresh'  : -50.0    #The threshold voltage at which the neuron will spike.
                    }
 
-
-## Load the 50ms_60Hz pickle poisson data
+#######################################################################################################################################
+## Load the 50ms_60Hz pickle poisson data and create the pattern for whole duration
 
 b=pickle.load(open('/home/ruthvik/Desktop/spikefile_800_50ms_60Hz','rb'))
 
@@ -57,7 +57,8 @@ for i in range(len(spikes)):                                   ##Here we are rep
          for c in range(1,n):
            spikes[i].append((pattern_gap+k)*c+spikes[i][j])
 
-
+################################################################################################################################
+#here we are creating 'noise' spike data.
 IAddPre = []
            
 
@@ -83,6 +84,8 @@ for i in range(1,n):
 for i in range(len(IAddPre)):
     p.Projection(IAddPre[i], ip_pop,p.OneToOneConnector(weights = 10.0,delays = 1.0),target = "excitatory")
 
+####################################################################################################################################
+##Here we set the parameters for the STDP rule and project ip_pop to op_pop.
 
 t_rule = p.SpikePairRule (tau_plus=15, tau_minus=35, nearest=True) #The 2 parameters of this class identify the exponential decay rate of the STDP function(Curve)
 w_rule = p.AdditiveWeightDependence (w_min=0.0, w_max=weight_to_spike, A_plus=1.5, A_minus=7)
@@ -95,20 +98,14 @@ project_ip_op = p.Projection( ip_pop,op_pop, p.AllToAllConnector(weights=.475, d
 stimlus_pop.record()
 ip_pop.record()
 op_pop.record()
-
 p.run((pattern_gap+k)*n)
-
-
 c=stimlus_pop.getSpikes()
 v=ip_pop.getSpikes()
 l=op_pop.getSpikes()
 
 '''with open('/home/ruthvik/Desktop/file_'+str(Neurons)+'_'+str(n)+'patterns'+'_'+str(pattern_gap)+'ms'+str((pattern_gap+k)*n)+'totaltime', 'w') as f:   ##make a pickle of spike data
     pickle.dump(v,f)'''
-
-
-
-
+###plot the spikes(input)
 spike_id = [i[0] for i in v]
 spike_time = [i[1] for i in v]
 pylab.plot(spike_time, spike_id, ".")
@@ -117,7 +114,7 @@ pylab.ylabel("NeuronID")
 pylab.axis([0, (pattern_gap+k)*n, 0, Neurons])
 pylab.show()
 
-
+###plot the output spikes
 spike_id2 = [i[0] for i in l]
 spike_time2 = [i[1] for i in l]
 pylab.plot(spike_time2, spike_id2, ".")
@@ -125,7 +122,7 @@ pylab.xlabel("Time(ms)")
 pylab.ylabel("NeuronID")
 pylab.axis([0, (pattern_gap+k)*n, -2, Neurons])
 pylab.show()
-
+###see if weights are 'evolving'
 weights = project_ip_op.getWeights()
 print "final synaptic weight: ", weights
 
