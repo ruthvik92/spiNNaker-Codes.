@@ -10,8 +10,8 @@ No.Of neurons should be same as in pickle file(here it is 700)
 Firing rate should same as in pickle file(here it is 6Hz).
 
 
-k: because of biological issues the neurons fire a lil more time than specified time 'pattern_length' specified in other code.
-pattern_gap: time after which pattern reappears again (copy this code to laptop)'''
+k: this is the length of the pattern(here it is 50ms) 
+pattern_gap: time after which pattern reappears again, say 200 or 150 '''
 
 Neurons=int(raw_input('Enter the total No.Of neurons in the simulation, here it is 700 as in supplied pickled pattern file)
 n= int(raw_input('Enter No of Patterns you totally want(n), say 100 or 200 or 250 : '))
