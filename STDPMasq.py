@@ -77,7 +77,7 @@ ip_pop = p.Population(Neurons, p.IF_curr_exp, cell_params_lif, label="inputneuro
 op_pop = p.Population(1, p.IF_curr_exp, cell_params_lif, label='outputneuron')
 project_stim_pop_ip_pop = p.Projection( stimlus_pop,ip_pop, p.OneToOneConnector(weights=10, delays=1), target="excitatory")
 
-###make noise
+###make noise i.e creating stochastic spike data
 
 for i in range(1,n):
     IAddPre.append(p.Population(Neurons,
