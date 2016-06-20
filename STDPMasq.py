@@ -1,5 +1,5 @@
 ''' 
-There are 700 input neurons and 1 output neuron. A pattern hidden in random poisson spiking is given as an input to 700 neurons,
+There are 700 input neurons and 1 output neuron and there is one to one connection between them. A pattern hidden in random poisson spiking is given as an input to 700 neurons,
 after sometime the output neuron only fires when there is pattern and it remains silent for random(stochastic) input spikes.
  Before running this code, ensure you have pickle file for the pattern, remember to change the path to supplied pickle file(pattern) 
 
