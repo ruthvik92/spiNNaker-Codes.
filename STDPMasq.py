@@ -1,7 +1,7 @@
 ''' 
-There are 700 input neurons and 1 output neuron. A pattern hidden in random poisson spiking is given as an input to 700 neurons
-after sometime the output neuron only fires when there is pattern and it remains silent for random(stochastic) input spikes
- before tunning this code ensure you have pickle file for the pattern, remember to change the path to supplied pickle file(pattern) 
+There are 700 input neurons and 1 output neuron. A pattern hidden in random poisson spiking is given as an input to 700 neurons,
+after sometime the output neuron only fires when there is pattern and it remains silent for random(stochastic) input spikes.
+ Before running this code, ensure you have pickle file for the pattern, remember to change the path to supplied pickle file(pattern) 
 
 Use the supplied pickle file.
 
@@ -13,9 +13,9 @@ Firing rate should same as in pickle file(here it is 6Hz).
 k: because of biological issues the neurons fire a lil more time than specified time 'pattern_length' specified in other code.
 pattern_gap: time after which pattern reappears again (copy this code to laptop)'''
 
-Neurons=int(raw_input('Enter the total No.Of neurons in the simulation, say 700(as in supplied pickle file): '))
+Neurons=int(raw_input('Enter the total No.Of neurons in the simulation, here it is 700 as in supplied pickled pattern file)
 n= int(raw_input('Enter No of Patterns you totally want(n), say 100 or 200 or 250 : '))
-pattern_gap= int(raw_input('Enter the duration after which next pattern should appear(pattern_gap): '))
+pattern_gap= int(raw_input('Enter the duration after which next pattern should appear(pattern_gap)say, 150 or 200: '))
 k=int(raw_input('Enter the extra time the i/p neurons spikes in pattern(give 50 for now)(k): '))
 weight_to_spike=1.0
 import pyNN.spiNNaker as p
