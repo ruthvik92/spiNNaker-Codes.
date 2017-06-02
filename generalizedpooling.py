@@ -1,4 +1,11 @@
 
+
+
+'''code tested for       |maps    |window    |
+                         |5       | 2        |
+                         |9       | 3        |
+                         |9       | 2        | here maps=5 means it's a 5x5 and window=2 means 2x2'''
+
 #this code does pooling without overlap. parameters are set for 5x5 map and 2x2 pooling window.
 ## The initial window is also formed automatically. ###this works for 2x2 pooling and 5x5 input map. still coding for general cases
 window = int(raw_input('Enter the size of the pooling window row(column):'))
@@ -21,23 +28,26 @@ print conn_list
 
 ## form the rest of the mapping(pooling).
 skip = []
-for p in range(0,mapp-1):
-    skip.append(window-1+p*window)    ##these numbers say when to skip to the next row. Here the count starts from 
+for p in range(0,mapp/window):
+    skip.append((mapp/window)-1+p*(mapp/window))    ##these numbers say when to skip to the next row. Here the count starts from 
                               ##0. map is 5x5 and window is 2x2.
 for i in range(0,(mapp/window)*(mapp/window)-1):    ####this gives number of full squares in 5x5 map.    
     if(i in skip):                  ### if we reach the count we should skip to next row.
-        print 'skip'
+        print 'skip and i:'
         print i
         z = skip.index(i)
         for k in range(0+(window**2)*i,(window**2)+(window**2)*i):   ### since our map is 2x2 there are 4 elements in the map henceforth 4.
-            n = conn_list[k][0] + window*(mapp-1)   ####this gives the skip 2 rows when going down. 2 rows so 2*4(added to the 5th item of previous row)  
+            print conn_list
+            n = conn_list[k][0] + window*(mapp-skip[0])   ####this gives the skip 2 rows when going down. 2 rows so 2*4(added to the 5th item of previous row)  
             m = conn_list[k][1] + 1   ## this is move to right.
             new_item= (n,m)
             conn_list.append(new_item)             
 
     else:
         for j in range(0+(window**2)*i,(window**2)+(window**2)*i):
-            #@print i
+            print "no skip and i:"
+            print i
+            print conn_list
             a = conn_list[j][0] +window      ###this gives skip to next non overlapping area in the same row. map is 2x2.
             b = conn_list[j][1] +1     
             list1 = (a,b)
