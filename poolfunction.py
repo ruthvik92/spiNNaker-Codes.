@@ -23,7 +23,7 @@ def pooling():
                               | | | | | | - 
                               - - - - - -
   - -
-  | | each of these boxes is a neuron, in this example we took 2x2 of neurons on leftside squares to form one square on rightside squares. There is no overlap and one column on right and one row on bottom of leftside squares
+  | | each of these boxes is a neuron, in this example we took window of 2x2 neurons on leftside squares to form one square on rightside squares. There is no overlap and one column on right and one row on bottom of leftside squares
   - -'''
     #this code does pooling without overlap. parameters are set for 5x5 map and 2x2 pooling window.
     ## The initial window is also formed automatically. ###this works for 2x2 pooling and 5x5 input map. still coding for general cases
