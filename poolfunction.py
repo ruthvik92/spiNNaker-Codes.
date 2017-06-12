@@ -25,7 +25,15 @@ def pooling():
   - -
   | | each of these boxes is a neuron, in this example we took window of 2x2 neurons on leftside squares to form one square on 
   - - rightside squares. There is no overlap and one column on right and one row on bottom of leftside squares to form 2x2 on 
-  right. The structure of list here is[pre_syn_neuron, post_syn_neuron, weight, axonal_delay]'''
+  right. The structure of list here is[pre_syn_neuron, post_syn_neuron, weight, axonal_delay]
+Sample output:
+Enter the size of the pooling window row(column):2
+Enter the size of the input map row(column):4
+Enter the weight value for pooling(enter 1):1
+Enter the delay value, its in milli seconds:1
+[(0, 0, 1, 1), (1, 0, 1, 1), (4, 0, 1, 1), (5, 0, 1, 1), (2, 1, 1, 1), (3, 1, 1, 1), (6, 1, 1, 1),
+(7, 1, 1, 1), (8, 2, 1, 1), (9, 2, 1, 1), (12, 2, 1, 1), (13, 2, 1, 1), (10, 3, 1, 1), (11, 3, 1, 1), 
+(14, 3, 1, 1), (15, 3, 1, 1)]'''
     #this code does pooling without overlap. parameters are set for 5x5 map and 2x2 pooling window.
     ## The initial window is also formed automatically. ###this works for 2x2 pooling and 5x5 input map. still coding for general cases
     window = int(raw_input('Enter the size of the pooling window row(column):'))
