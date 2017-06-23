@@ -6,9 +6,15 @@ class poolconv():
                              |9       | 3 ov 1   |                         
                              |10      | 3 ov1 NW |
                              |10      | 3 ov 0   |
-                        
-            eg: here maps=5 means it's a 5x5 and window=2 means 2x2
-
+                             |5       | 3 ov 2   |
+                             |5       | 3 ov 1   |
+                             |4       | 3 ov 0   |
+                             |4       |3 ov 1    |
+                             |6       |3 ov 0    |
+                             |6       |3 ov 1 NW |
+                             |6       |3 ov 2    |
+            eg: here maps=5 means it's a 5x5 and window=2 means 2x2, (10,3 ov1 case left out last column)                       
+    
                               - - - - - -
                               | | | | | | -
                               - - - - - -   -
@@ -88,5 +94,4 @@ window-1'''
                     self.conn_list.append(list1)
                     
 
-c = poolconv(3,5,1,1,1)
-
+c = poolconv(3,6,1,1,2)
