@@ -11,8 +11,10 @@ file_name = "/home/ruthvik/Desktop/Summer 2017/00027.aedat"
 image_size = 28
 jaer_size =0
 class poolconv():
+
     
-    '''    code tested for   |map     |window    |
+    
+    ''' code tested for   |map     |window    |
                              |7       | 3 ov 1   |
                              |9       | 3 ov 1   |                         
                              |10      | 3 ov1 NW |
@@ -40,7 +42,13 @@ class poolconv():
     [(0, 0, 1, 1), (1, 0, 1, 1), (4, 0, 1, 1), (5, 0, 1, 1), (2, 1, 1, 1), (3, 1, 1, 1), (6, 1, 1, 1), (7, 1, 1, 1),
     (8, 2, 1, 1), (9, 2, 1, 1), (12, 2, 1, 1), (13, 2, 1, 1), (10, 3, 1, 1), (11, 3, 1, 1), (14, 3, 1, 1), (15, 3, 1, 1)]
 This code can also be used for convolving populations. For performing convolution just enter the overlap value:
-window-1'''
+window-1
+    :param window: Size of the window
+    :param mapp:   Size of the map
+    :delay: Axonal delay
+    :overlap: Overlap between windows
+    '''
+    
     conn_list = [(0,0,1,1)]
     def __init__(self,window,mapp,weight,delay,overlap):
         self.window = window
