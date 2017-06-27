@@ -25,7 +25,20 @@ class weights():
 	
 
 
+##### Example of pass by reference
+def afunc(a):
+    a.wam[0]=a.wam[0]+1
+    
 
 
+
+
+c = weights.returnobjs(3,3)
+
+print c[0].wam
+
+afunc(c[0])
+
+print c[0].wam
 
 
